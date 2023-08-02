@@ -2,11 +2,10 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 
 const Project = require("../models/Project.model");
-const User = require("../models/User.model");
 
 // POST Create a new project
 router.post("/projects", (req, res, next) => {
-  const { user, projectName, description, techs } = req.body;
+  const { projectName, description, techs } = req.body;
 
   Project.create({ projectName, description, techs })
     .then((response) => res.json(response))

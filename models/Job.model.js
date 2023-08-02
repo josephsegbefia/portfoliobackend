@@ -1,6 +1,18 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
+const { isURL } = require("validator");
 
+function urlSchema(opts = {}) {
+  const { required } = opts;
+  return {
+    type: String,
+    required: !!required,
+    validate: {
+      validator: isURL,
+      message: (props) => `$(props.value) is not a valid URL`
+    }
+  };
+}
 const jobSchema = new Schema(
   {
     employerName: { type: String, required: true },
@@ -10,11 +22,11 @@ const jobSchema = new Schema(
     jobPublisher: { type: String },
     jobId: { type: String },
     jobTitle: { type: String },
-    jobApplyLink: { type: String },
+    jobApplyLink: urlSchema(),
     jobDescription: { type: String },
     jobCity: { type: String },
     jobCountry: { types: String },
-    jobOfferExpirationDateTime: { type: Date },
+    jobOfferExpirationDateTime: { type: String },
     dateApplied: { type: Date, default: Date.now() },
     status: {
       type: String,
