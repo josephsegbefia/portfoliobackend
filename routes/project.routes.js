@@ -58,7 +58,7 @@ router.delete("/projects/:projectId", (req, res, next) => {
 
   Project.findByIdAndRemove(projectId)
     .then(() =>
-      res.json({ message: `project with ${projectId} is removed successfully` })
+      res.json({ message: `Project with ${projectId} is removed successfully` })
     )
     .catch((err) => res.json(err));
 });
