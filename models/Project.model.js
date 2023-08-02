@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
-const { isURL } = require(validator);
+const { isURL } = require("validator");
 
 function urlSchema(opts = {}) {
   const { required } = opts;

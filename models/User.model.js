@@ -35,9 +35,7 @@ const userSchema = new Schema({
   avatarUrl: urlSchema(),
   skills: { type: [String] },
   linkedInUrl: urlSchema(),
-  gitHubUrl: urlSchema(),
-  jobsApplied: [{ type: Schema.Types.ObjectId, ref: "Job" }],
-  projects: [{ type: Schema.Types.ObjectId, ref: "Project" }]
+  gitHubUrl: urlSchema()
 });
 
 const User = model("User", userSchema);
