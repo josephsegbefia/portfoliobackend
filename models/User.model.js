@@ -27,15 +27,18 @@ function urlSchema(opts = {}) {
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema({
-  fullName: { type: String },
+  firstName: { type: String },
+  lastName: { type: String },
   email: emailSchema(),
-  headLine: { type: String },
-  phone: { type: String },
-  about: { type: String, required: true },
-  avatarUrl: urlSchema(),
-  skills: { type: [String] },
-  linkedInUrl: urlSchema(),
-  gitHubUrl: urlSchema()
+  password: { type: String, required: true }
+
+  // headLine: { type: String },
+  // phone: { type: String },
+  // about: { type: String, required: true },
+  // avatarUrl: urlSchema(),
+  // skills: { type: [String] },
+  // linkedInUrl: urlSchema(),
+  // gitHubUrl: urlSchema()
 });
 
 const User = model("User", userSchema);
