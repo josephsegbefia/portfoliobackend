@@ -9,7 +9,7 @@ const saltRounds = 10;
 const { isAuthenticated } = require("./../middleware/jwt.middleware.js");
 // POST
 
-router.post("/signup/pachanga", (req, res, next) => {
+router.post("/signup", (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
 
   if (firstName === "" || lastName === "" || email === "" || password === "") {
