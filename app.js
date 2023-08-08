@@ -25,11 +25,11 @@ app.use("/api", indexRoutes);
 const projectRouter = require("./routes/project.routes");
 app.use("/api", projectRouter);
 
+const messageRouter = require("./routes/message.routes");
+app.use("/api", messageRouter);
+
 const jobRouter = require("./routes/job.routes");
 app.use("/api", isAuthenticated, jobRouter);
-
-const messageRouter = require("./routes/message.routes");
-app.use("/api", isAuthenticated, messageRouter);
 
 const authRouter = require("./routes/auth.routes");
 app.use("/auth", authRouter);
