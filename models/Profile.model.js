@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
-const { isURL } = require("validator");
+const { isURL, isEmail } = require("validator");
 
 function urlSchema(opts = {}) {
   const { required } = opts;
@@ -15,11 +15,23 @@ function urlSchema(opts = {}) {
   };
 }
 
+function emailSchema(opts = {}) {
+  const { required } = opts;
+  return {
+    type: String,
+    required: !!required,
+    validate: {
+      validator: isEmail,
+      message: (props) => `${props.value} is not a valid email address`
+    }
+  };
+}
+
 const profileSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   headLine: { type: String, required: true },
-  email: urlSchema(),
+  email: isEmail(),
   phone: { type: String, required: true },
   avatarURL: urlSchema(),
   skills: [String],
