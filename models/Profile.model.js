@@ -31,7 +31,7 @@ const profileSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   headLine: { type: String, required: true },
-  email: isEmail(),
+  email: emailSchema(),
   phone: { type: String, required: true },
   avatarURL: urlSchema(),
   skills: [String],

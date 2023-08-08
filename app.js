@@ -28,6 +28,9 @@ app.use("/api", projectRouter);
 const messageRouter = require("./routes/message.routes");
 app.use("/api", messageRouter);
 
+const profileRouter = require("./routes/profile.routes");
+app.use("/api", profileRouter);
+
 const jobRouter = require("./routes/job.routes");
 app.use("/api", isAuthenticated, jobRouter);
 
