@@ -2,12 +2,25 @@ const router = require("express").Router();
 const mongoose = require("mongoose");
 
 const Project = require("../models/Project.model");
+const fileUploader = require("../config/cloudinary.config");
 
+router.post(
+  "/upload-project-image",
+  fileUploader.single("imageUrl"),
+  (req, res, next) => {
+    if (!req.file) {
+      next(new Error("No file Uploaded"));
+      return;
+    }
+
+    res.json({ fileUrl: req.file.path });
+  }
+);
 // POST Create a new project
 router.post("/projects", (req, res, next) => {
-  const { projectName, description, techs } = req.body;
+  const { projectName, description, techs, imageUrl } = req.body;
 
-  Project.create({ projectName, description, techs })
+  Project.create({ projectName, description, techs, imageUrl })
     .then((response) => res.json(response))
     .catch((err) => res.json(err));
 });
