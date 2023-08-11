@@ -18,9 +18,17 @@ router.post(
 );
 // POST Create a new project
 router.post("/projects", (req, res, next) => {
-  const { projectName, description, techs, imageUrl } = req.body;
+  const { projectName, description, techs, imageUrl, githubUrl, demoLink } =
+    req.body;
 
-  Project.create({ projectName, description, techs, imageUrl })
+  Project.create({
+    projectName,
+    description,
+    techs,
+    imageUrl,
+    githubUrl,
+    demoLink
+  })
     .then((response) => res.json(response))
     .catch((err) => res.json(err));
 });

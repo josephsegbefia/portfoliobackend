@@ -19,7 +19,9 @@ const projectSchema = new Schema(
     projectName: { type: String, required: true },
     description: { type: String, required: true },
     techs: { type: [String], required: true },
-    imageUrl: urlSchema()
+    imageUrl: { type: String },
+    githubUrl: urlSchema(),
+    demoLink: urlSchema()
   },
   {
     timestamps: true
